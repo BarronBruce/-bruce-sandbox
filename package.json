@@ -1,0 +1,15 @@
+{
+  "name": "bruce-sandbox",
+  "version": "2.0.0",
+  "description": "BRUCE collaborative intelligence sandbox",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "openai": "^5.0.0"
+  }
+}
