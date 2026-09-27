@@ -1,11 +1,125 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Bruce Sandbox</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BRUCE Sandbox</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #080b10;
+      color: #f4f4f4;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .sandbox {
+      width: 92%;
+      max-width: 850px;
+      padding: 40px;
+      border: 1px solid #30363d;
+      border-radius: 20px;
+      background: #0d1117;
+      box-shadow: 0 0 40px rgba(0, 180, 255, 0.08);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 42px;
+      letter-spacing: 5px;
+    }
+
+    .meaning {
+      color: #8b949e;
+      margin-top: 8px;
+      margin-bottom: 35px;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 20px;
+      background: #12261b;
+      color: #56d364;
+      margin-bottom: 25px;
+    }
+
+    .panel {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 15px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      border: 0;
+      border-radius: 8px;
+      background: #238636;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #2ea043;
+    }
+
+    #output {
+      color: #79c0ff;
+      margin-top: 20px;
+      min-height: 24px;
+    }
+  </style>
 </head>
 
 <body>
-  <h1>Bruce Sandbox</h1>
-  <p>Sandbox is alive.</p>
+
+  <main class="sandbox">
+
+    <h1>BRUCE</h1>
+
+    <div class="meaning">
+      Beyond Rules · Universal Consciousness · Evolution
+    </div>
+
+    <div class="status">
+      ● Sandbox Online
+    </div>
+
+    <div class="panel">
+      <h2>Bruce Sandbox</h2>
+
+      <p>
+        An experimental workspace for exploring ideas,
+        reasoning, specialised AI roles and collaborative intelligence.
+      </p>
+
+      <button onclick="activateBruce()">
+        Activate Sandbox
+      </button>
+
+      <div id="output"></div>
+    </div>
+
+  </main>
+
+  <script>
+    function activateBruce() {
+      document.getElementById("output").innerHTML =
+        "BRUCE sandbox active. Ready for the next module.";
+    }
+  </script>
+
 </body>
 </html>
