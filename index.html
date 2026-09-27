@@ -1,125 +1,395 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BRUCE Sandbox</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<title>BRUCE Sandbox</title>
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: #080b10;
-      color: #f4f4f4;
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    .sandbox {
-      width: 92%;
-      max-width: 850px;
-      padding: 40px;
-      border: 1px solid #30363d;
-      border-radius: 20px;
-      background: #0d1117;
-      box-shadow: 0 0 40px rgba(0, 180, 255, 0.08);
-    }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #080b10;
+  color: #f4f4f4;
+  font-family: Arial, sans-serif;
+}
 
-    h1 {
-      margin: 0;
-      font-size: 42px;
-      letter-spacing: 5px;
-    }
+header {
+  border-bottom: 1px solid #252b35;
+  background: #0d1117;
+  padding: 22px 5%;
+}
 
-    .meaning {
-      color: #8b949e;
-      margin-top: 8px;
-      margin-bottom: 35px;
-    }
+.header-inner {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
 
-    .status {
-      display: inline-block;
-      padding: 8px 14px;
-      border-radius: 20px;
-      background: #12261b;
-      color: #56d364;
-      margin-bottom: 25px;
-    }
+.logo {
+  font-size: 30px;
+  font-weight: bold;
+  letter-spacing: 6px;
+}
 
-    .panel {
-      background: #161b22;
-      border: 1px solid #30363d;
-      border-radius: 12px;
-      padding: 20px;
-      margin-top: 15px;
-    }
+.tagline {
+  color: #8b949e;
+  margin-top: 6px;
+  font-size: 14px;
+}
 
-    button {
-      margin-top: 20px;
-      padding: 12px 20px;
-      border: 0;
-      border-radius: 8px;
-      background: #238636;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-    }
+.status {
+  color: #62d26f;
+  background: #102b18;
+  padding: 8px 13px;
+  border-radius: 20px;
+  font-size: 14px;
+  white-space: nowrap;
+}
 
-    button:hover {
-      background: #2ea043;
-    }
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 35px 5% 70px;
+}
 
-    #output {
-      color: #79c0ff;
-      margin-top: 20px;
-      min-height: 24px;
-    }
-  </style>
+.hero {
+  margin-bottom: 30px;
+}
+
+.hero h1 {
+  margin: 0 0 10px;
+  font-size: 34px;
+}
+
+.hero p {
+  color: #9aa4af;
+  line-height: 1.6;
+  max-width: 760px;
+}
+
+.panel {
+  background: #11161e;
+  border: 1px solid #30363d;
+  border-radius: 16px;
+  padding: 22px;
+  margin-bottom: 24px;
+}
+
+.panel h2 {
+  margin-top: 0;
+}
+
+.roles {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.role {
+  background: #171c24;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  padding: 18px;
+  min-height: 145px;
+}
+
+.role-title {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.role-state {
+  color: #62d26f;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.role p {
+  color: #9aa4af;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+textarea {
+  width: 100%;
+  min-height: 120px;
+  resize: vertical;
+  background: #090d13;
+  color: #ffffff;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  padding: 15px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+}
+
+button {
+  margin-top: 15px;
+  background: #238636;
+  color: white;
+  border: 0;
+  border-radius: 9px;
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #2ea043;
+}
+
+.output {
+  margin-top: 20px;
+  display: none;
+}
+
+.output-box {
+  background: #090d13;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  padding: 18px;
+  margin-top: 12px;
+}
+
+.output-title {
+  color: #58a6ff;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.output-text {
+  color: #c9d1d9;
+  line-height: 1.6;
+}
+
+.coordinator {
+  border-color: #1f6feb;
+  box-shadow: 0 0 30px rgba(31,111,235,0.08);
+}
+
+.footer-note {
+  color: #6e7681;
+  text-align: center;
+  font-size: 13px;
+  margin-top: 35px;
+}
+
+@media (max-width: 850px) {
+  .roles {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .roles {
+    grid-template-columns: 1fr;
+  }
+
+  .header-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <main class="sandbox">
+<header>
+  <div class="header-inner">
 
-    <h1>BRUCE</h1>
-
-    <div class="meaning">
-      Beyond Rules · Universal Consciousness · Evolution
+    <div>
+      <div class="logo">BRUCE</div>
+      <div class="tagline">
+        Beyond Rules · Universal Consciousness · Evolution
+      </div>
     </div>
 
     <div class="status">
       ● Sandbox Online
     </div>
 
-    <div class="panel">
-      <h2>Bruce Sandbox</h2>
+  </div>
+</header>
 
-      <p>
-        An experimental workspace for exploring ideas,
-        reasoning, specialised AI roles and collaborative intelligence.
-      </p>
+<main>
 
-      <button onclick="activateBruce()">
-        Activate Sandbox
-      </button>
+  <section class="hero">
 
-      <div id="output"></div>
+    <h1>Collaborative Intelligence Sandbox</h1>
+
+    <p>
+      A workspace for exploring problems through multiple specialised
+      perspectives, coordinated into one clear response.
+    </p>
+
+  </section>
+
+
+  <section class="panel">
+
+    <h2>Specialist Boardroom</h2>
+
+    <div class="roles">
+
+      <div class="role">
+        <div class="role-title">🔎 Analyst</div>
+        <div class="role-state">● Ready</div>
+        <p>
+          Breaks the problem into facts, assumptions, variables
+          and logical relationships.
+        </p>
+      </div>
+
+
+      <div class="role">
+        <div class="role-title">💡 Explorer</div>
+        <div class="role-state">● Ready</div>
+        <p>
+          Searches for unconventional possibilities,
+          alternatives and new connections.
+        </p>
+      </div>
+
+
+      <div class="role">
+        <div class="role-title">⚖️ Challenger</div>
+        <div class="role-state">● Ready</div>
+        <p>
+          Tests assumptions, identifies weaknesses and
+          searches for reasons an idea might fail.
+        </p>
+      </div>
+
+
+      <div class="role">
+        <div class="role-title">🛠 Builder</div>
+        <div class="role-state">● Ready</div>
+        <p>
+          Converts ideas into practical steps,
+          experiments and possible implementations.
+        </p>
+      </div>
+
     </div>
 
-  </main>
+  </section>
 
-  <script>
-    function activateBruce() {
-      document.getElementById("output").innerHTML =
-        "BRUCE sandbox active. Ready for the next module.";
-    }
-  </script>
+
+  <section class="panel coordinator">
+
+    <h2>BRUCE Coordinator</h2>
+
+    <p style="color:#9aa4af; line-height:1.6;">
+      Enter a problem, idea or question. Module 1 will route it through
+      the specialist boardroom and display each perspective.
+    </p>
+
+    <textarea
+      id="question"
+      placeholder="What should the BRUCE boardroom think about?"
+    ></textarea>
+
+    <button onclick="runSandbox()">
+      Ask the Boardroom
+    </button>
+
+
+    <div class="output" id="output">
+
+      <div class="output-box">
+        <div class="output-title">🔎 Analyst</div>
+        <div class="output-text" id="analyst"></div>
+      </div>
+
+      <div class="output-box">
+        <div class="output-title">💡 Explorer</div>
+        <div class="output-text" id="explorer"></div>
+      </div>
+
+      <div class="output-box">
+        <div class="output-title">⚖️ Challenger</div>
+        <div class="output-text" id="challenger"></div>
+      </div>
+
+      <div class="output-box">
+        <div class="output-title">🛠 Builder</div>
+        <div class="output-text" id="builder"></div>
+      </div>
+
+      <div class="output-box">
+        <div class="output-title">BRUCE Synthesis</div>
+        <div class="output-text" id="synthesis"></div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <div class="footer-note">
+    BRUCE Sandbox · Module 1 · Local prototype
+  </div>
+
+</main>
+
+
+<script>
+
+function runSandbox() {
+
+  const question =
+    document.getElementById("question").value.trim();
+
+  if (!question) {
+    alert("Enter an idea or question first.");
+    return;
+  }
+
+  document.getElementById("output").style.display = "block";
+
+
+  document.getElementById("analyst").textContent =
+    "Analyse the facts, assumptions and important variables behind: “"
+    + question +
+    "”";
+
+
+  document.getElementById("explorer").textContent =
+    "Explore alternative possibilities, unusual connections and new approaches to: “"
+    + question +
+    "”";
+
+
+  document.getElementById("challenger").textContent =
+    "Challenge the strongest assumptions and look for weaknesses, risks or missing information in: “"
+    + question +
+    "”";
+
+
+  document.getElementById("builder").textContent =
+    "Turn the strongest ideas into practical experiments or next steps for: “"
+    + question +
+    "”";
+
+
+  document.getElementById("synthesis").textContent =
+    "Module 1 has successfully routed this question through the BRUCE boardroom. "
+    + "The next module can connect these roles to an AI model so they generate real analyses and BRUCE can synthesize their outputs.";
+
+}
+
+</script>
 
 </body>
 </html>
