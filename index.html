@@ -346,50 +346,39 @@ button:hover {
 
 <script>
 
-function runSandbox() {
-
-  const question =
-    document.getElementById("question").value.trim();
-
+async function runSandbox() {
+  const question = document.getElementById("question").value.trim();
   if (!question) {
     alert("Enter an idea or question first.");
     return;
   }
 
+  const ids = ["analyst", "explorer", "challenger", "builder", "synthesis"];
   document.getElementById("output").style.display = "block";
+  ids.forEach(id => {
+    document.getElementById(id).textContent = "Thinking...";
+  });
 
+  try {
+    const response = await fetch("https://bruce-sandbox.onrender.com/ask", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question })
+    });
 
-  document.getElementById("analyst").textContent =
-    "Analyse the facts, assumptions and important variables behind: “"
-    + question +
-    "”";
+    if (!response.ok) throw new Error("Server returned " + response.status);
+    const data = await response.json();
 
-
-  document.getElementById("explorer").textContent =
-    "Explore alternative possibilities, unusual connections and new approaches to: “"
-    + question +
-    "”";
-
-
-  document.getElementById("challenger").textContent =
-    "Challenge the strongest assumptions and look for weaknesses, risks or missing information in: “"
-    + question +
-    "”";
-
-
-  document.getElementById("builder").textContent =
-    "Turn the strongest ideas into practical experiments or next steps for: “"
-    + question +
-    "”";
-
-
-  document.getElementById("synthesis").textContent =
-    "Module 1 has successfully routed this question through the BRUCE boardroom. "
-    + "The next module can connect these roles to an AI model so they generate real analyses and BRUCE can synthesize their outputs.";
-
-}
-
-</script>
+    for (const id of ids) {
+      document.getElementById(id).textContent =
+        typeof data[id] === "string" ? data[id] : "No response received.";
+    }
+  } catch (error) {
+    ids.forEach(id => {
+      document.getElementById(id).textContent = "Connection error: " + error.message;
+    });
+  }
+}</script>
 
 </body>
 </html>
